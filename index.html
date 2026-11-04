@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETHINKER MEDIA // Independent Documentary Studio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#080808',
+                        charcoal: '#121212',
+                        bonewhite: '#E8E6E1',
+                        amberAccent: '#C85A17',
+                        amberBright: '#D96B27',
+                        slateBorder: '#1E1E1E',
+                        mutedText: '#888888'
+                    },
+                    fontFamily: {
+                        heading: ['Syne', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Film Grain Noise Background */
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Viewfinder Reticle Corners */
+        .reticle-box {
+            position: relative;
+        }
+        .reticle-box::before, .reticle-box::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-color: #C85A17;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .reticle-box::before {
+            top: -1px;
+            left: -1px;
+            border-top: 2px solid #C85A17;
+            border-left: 2px solid #C85A17;
+        }
+        .reticle-box::after {
+            bottom: -1px;
+            right: -1px;
+            border-bottom: 2px solid #C85A17;
+            border-right: 2px solid #C85A17;
+        }
+
+        /* Viewfinder Crosshair Icons */
+        .crosshair-tl { position: absolute; top: 12px; left: 12px; opacity: 0.4; color: #C85A17; font-family: monospace; font-size: 10px; }
+        .crosshair-tr { position: absolute; top: 12px; right: 12px; opacity: 0.4; color: #C85A17; font-family: monospace; font-size: 10px; }
+        .crosshair-bl { position: absolute; bottom: 12px; left: 12px; opacity: 0.4; color: #C85A17; font-family: monospace; font-size: 10px; }
+        .crosshair-br { position: absolute; bottom: 12px; right: 12px; opacity: 0.4; color: #C85A17; font-family: monospace; font-size: 10px; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E1E1E;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C85A17;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-bonewhite font-sans antialiased selection:bg-amberAccent selection:text-obsidian relative bg-grain overflow-x-hidden">
+
+    <!-- 1. TOP VIEWFINDER TICKER (FIXED FLUSH) -->
+    <div id="top-ticker" class="fixed top-0 left-0 right-0 z-50 bg-obsidian border-b border-slateBorder py-1 px-4 text-xs font-mono text-mutedText flex justify-between items-center select-none h-[29px]">
+        <div class="flex items-center space-x-3 overflow-hidden whitespace-nowrap">
+            <span class="inline-block w-2 h-2 rounded-full bg-amberAccent animate-pulse-slow"></span>
+            <span class="text-bonewhite font-semibold tracking-wider">[ SYSTEM: ONLINE ]</span>
+            <span class="hidden sm:inline text-slateBorder">//</span>
+            <span class="hidden sm:inline">[ BASE: MEERUT / DELHI-NCR ]</span>
+            <span class="hidden md:inline text-slateBorder">//</span>
+            <span class="hidden md:inline text-amberBright">[ STATUS: DEPLOYED IN FIELD ]</span>
+            <span class="hidden lg:inline text-slateBorder">//</span>
+            <span class="hidden lg:inline text-mutedText">[ PROJECT: FIRST FRAME ]</span>
+        </div>
+        <div class="flex items-center space-x-4 shrink-0 text-[10px] sm:text-xs">
+            <span id="live-time" class="text-bonewhite font-mono">00:00:00 UTC</span>
+            <span class="text-amberAccent font-bold">REC ●</span>
+        </div>
+    </div>
+
+    <!-- 2. NAVIGATION BAR (FLUSH ATTACHED TO TICKER) -->
+    <nav class="sticky top-[29px] z-40 bg-obsidian/95 backdrop-blur-md border-b border-slateBorder py-3.5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+        <a href="#" class="flex items-center space-x-3 group">
+            <div class="w-8 h-8 border border-amberAccent flex items-center justify-center font-mono text-amberAccent font-bold text-sm group-hover:bg-amberAccent group-hover:text-obsidian transition-colors">
+                RM
+            </div>
+            <span class="font-heading font-extrabold text-lg sm:text-xl tracking-tighter text-bonewhite group-hover:text-amberBright transition-colors">
+                RETHINKER<span class="text-amberAccent">.</span>MEDIA
+            </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8 text-xs font-mono uppercase tracking-widest text-mutedText">
+            <a href="#manifesto" class="hover:text-amberBright transition-colors">01// Manifesto</a>
+            <a href="#vibe-matrix" class="hover:text-amberBright transition-colors">02// Vibe Matrix</a>
+            <a href="#field-command" class="hover:text-amberBright transition-colors">03// Field Command</a>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="flex items-center space-x-4">
+            <button onclick="openModal()" class="reticle-box bg-charcoal hover:bg-amberAccent hover:text-obsidian text-amberBright border border-slateBorder px-4 py-2 font-mono text-xs tracking-wider font-bold transition-all duration-200">
+                [ CORE ROSTER: OPENING SOON ]
+            </button>
+        </div>
+    </nav>
+
+    <!-- 3. HERO SECTION -->
+    <section class="relative min-h-[85vh] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20 border-b border-slateBorder overflow-hidden">
+        <!-- Corner Viewfinder Marks -->
+        <div class="crosshair-tl">+ 00.12.94</div>
+        <div class="crosshair-tr">RAW // 4K LOG</div>
+        <div class="crosshair-bl">ISO 800 // 24FPS</div>
+        <div class="crosshair-br">CAM_01 // ACTIVE</div>
+
+        <!-- Hero Content -->
+        <div class="max-w-5xl z-10 my-auto">
+            <div class="inline-flex items-center space-x-2 border border-amberAccent/40 bg-amberAccent/10 px-3 py-1 text-xs font-mono text-amberBright mb-6">
+                <i class="fa-solid fa-circle text-[8px]"></i>
+                <span>INDEPENDENT DOCUMENTARY STUDIO</span>
+            </div>
+            
+            <h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-bonewhite uppercase leading-[0.95] mb-8">
+                REALITY DOESN’T WAIT FOR <span class="text-transparent bg-clip-text bg-gradient-to-r from-amberAccent via-amberBright to-bonewhite">SCRIPT APPROVAL.</span>
+            </h1>
+
+            <p class="text-base sm:text-xl font-sans text-mutedText max-w-2xl font-light leading-relaxed mb-10">
+                Rethinker Media is an on-the-ground, independent documentary studio. We reject polished corporate fluff, fake narratives, and comfortable desk jobs to capture objective reality, raw friction, and uncompromised street-level truth.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 font-mono text-xs">
+                <a href="#manifesto" class="bg-amberAccent hover:bg-amberBright text-obsidian px-8 py-4 font-bold tracking-widest text-center transition-all duration-200 flex items-center justify-center space-x-2">
+                    <span>EXPLORE THE WORK</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+                <button onclick="openModal()" class="border border-slateBorder hover:border-amberAccent text-bonewhite hover:text-amberBright px-8 py-4 font-bold tracking-widest text-center transition-all duration-200 bg-charcoal/50">
+                    CORE ROSTER [OPENING SOON]
+                </button>
+            </div>
+        </div>
+
+        <!-- Background Grid Lines Overlay -->
+        <div class="absolute inset-0 pointer-events-none opacity-20 flex justify-between px-12">
+            <div class="w-px h-full bg-slateBorder"></div>
+            <div class="w-px h-full bg-slateBorder hidden md:block"></div>
+            <div class="w-px h-full bg-slateBorder hidden lg:block"></div>
+            <div class="w-px h-full bg-slateBorder"></div>
+        </div>
+    </section>
+
+    <!-- 4. KINETIC MARQUEE -->
+    <div class="border-b border-slateBorder bg-charcoal/80 py-4 overflow-hidden whitespace-nowrap select-none font-mono text-xs tracking-widest uppercase text-mutedText">
+        <div class="inline-block animate-marquee">
+            <span class="mx-6 text-amberBright font-bold">✦ UNFILTERED REALITY</span>
+            <span class="mx-6">// ZERO AGENCY FLUFF</span>
+            <span class="mx-6 text-amberBright font-bold">✦ GROUND-LEVEL TRUTH</span>
+            <span class="mx-6">// OWNERSHIP OVER EMPLOYMENT</span>
+            <span class="mx-6 text-amberBright font-bold">✦ CINEMATIC BRUTALISM</span>
+            <span class="mx-6">// OBJECTIVE OBSERVATION</span>
+            <span class="mx-6 text-amberBright font-bold">✦ UNFILTERED REALITY</span>
+            <span class="mx-6">// ZERO AGENCY FLUFF</span>
+            <span class="mx-6 text-amberBright font-bold">✦ GROUND-LEVEL TRUTH</span>
+            <span class="mx-6">// OWNERSHIP OVER EMPLOYMENT</span>
+        </div>
+        <div class="inline-block animate-marquee" aria-hidden="true">
+            <span class="mx-6 text-amberBright font-bold">✦ UNFILTERED REALITY</span>
+            <span class="mx-6">// ZERO AGENCY FLUFF</span>
+            <span class="mx-6 text-amberBright font-bold">✦ GROUND-LEVEL TRUTH</span>
+            <span class="mx-6">// OWNERSHIP OVER EMPLOYMENT</span>
+            <span class="mx-6 text-amberBright font-bold">✦ CINEMATIC BRUTALISM</span>
+            <span class="mx-6">// OBJECTIVE OBSERVATION</span>
+            <span class="mx-6 text-amberBright font-bold">✦ UNFILTERED REALITY</span>
+            <span class="mx-6">// ZERO AGENCY FLUFF</span>
+            <span class="mx-6 text-amberBright font-bold">✦ GROUND-LEVEL TRUTH</span>
+            <span class="mx-6">// OWNERSHIP OVER EMPLOYMENT</span>
+        </div>
+    </div>
+
+    <!-- 5. CORE THESIS & ANCHOR SECTION -->
+    <section id="manifesto" class="py-24 px-6 md:px-16 lg:px-24 border-b border-slateBorder relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="font-mono text-xs text-amberAccent mb-4 tracking-widest uppercase">
+                01 // THE ANCHOR & PHILOSOPHY
+            </div>
+            
+            <h2 class="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight uppercase text-bonewhite mb-12 max-w-3xl">
+                WE ARE INSIDERS LOOKING OUTWARD.
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 font-sans text-mutedText leading-relaxed">
+                <div class="border-l border-amberAccent/40 pl-6 space-y-6">
+                    <h3 class="font-mono text-sm font-bold text-bonewhite uppercase tracking-wider">
+                        [ THE NOISE vs. THE TRUTH ]
+                    </h3>
+                    <p class="text-base font-light">
+                        There are a thousand creators chasing short-term viral algorithms, and a thousand corporate media houses manufacturing artificial narratives for boardrooms. We chose a different path.
+                    </p>
+                    <p class="text-base font-light">
+                        Rethinker Media operates directly on the streets. We are an insider native looking outward—documenting the events, friction, and hidden textures of the ground with cinematic rigor and total objectivity.
+                    </p>
+                </div>
+
+                <div class="border-l border-slateBorder pl-6 space-y-6">
+                    <h3 class="font-mono text-sm font-bold text-bonewhite uppercase tracking-wider">
+                        [ DEDICATION & ETHICS OVER SHORTCUTS ]
+                    </h3>
+                    <p class="text-base font-light">
+                        We do not believe a studio is defined by venture cash or expensive corporate offices. A legendary studio is built by dedication, innovative vision, raw experience, and uncompromising ethics.
+                    </p>
+                    <p class="text-base font-light">
+                        Our purpose is service to society through the most valuable currency in media: <strong class="text-bonewhite font-normal">absolute, unfiltered perspective.</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. THE VIBE MATRIX SECTION -->
+    <section id="vibe-matrix" class="py-24 px-6 md:px-16 lg:px-24 border-b border-slateBorder bg-obsidian relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <div class="font-mono text-xs text-amberAccent mb-4 tracking-widest uppercase">
+                        02 // OPERATIONAL DISCIPLINE
+                    </div>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight uppercase text-bonewhite">
+                        THE VIBE MATRIX
+                    </h2>
+                </div>
+                <p class="font-mono text-xs text-mutedText mt-4 md:mt-0 max-w-xs">
+                    // RULE: The mood of the camera must mirror the honest reality of the ground.
+                </p>
+            </div>
+
+            <!-- 3-Column Card Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="reticle-box bg-charcoal border border-slateBorder p-8 group hover:border-amberAccent transition-all duration-300 relative overflow-hidden">
+                    <div class="font-mono text-xs text-amberAccent mb-6 flex justify-between items-center">
+                        <span>[ CARD_01 ]</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">RAW_FEED</span>
+                    </div>
+                    <div class="h-44 bg-obsidian mb-6 overflow-hidden relative border border-slateBorder">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" 
+                             alt="Exploration" 
+                             class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-amberAccent/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
+                        EXPLORATION
+                    </h3>
+                    <p class="font-sans text-xs text-mutedText leading-relaxed font-light">
+                        Visiting, observing, and experiencing without pre-packaged scripts. When the environment is alive and vibrant, our visual tone is open, curious, and natural.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="reticle-box bg-charcoal border border-slateBorder p-8 group hover:border-amberAccent transition-all duration-300 relative overflow-hidden">
+                    <div class="font-mono text-xs text-amberAccent mb-6 flex justify-between items-center">
+                        <span>[ CARD_02 ]</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">FIELD_TESTED</span>
+                    </div>
+                    <div class="h-44 bg-obsidian mb-6 overflow-hidden relative border border-slateBorder">
+                        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=800&auto=format&fit=crop" 
+                             alt="Reality" 
+                             class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-amberAccent/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
+                        REALITY
+                    </h3>
+                    <p class="font-sans text-xs text-mutedText leading-relaxed font-light">
+                        Zero artificial cheerfulness. Zero manufactured outrage. If a place is tough or corrupt, our vibe reflects that exact gravity with unflinching honesty.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="reticle-box bg-charcoal border border-slateBorder p-8 group hover:border-amberAccent transition-all duration-300 relative overflow-hidden">
+                    <div class="font-mono text-xs text-amberAccent mb-6 flex justify-between items-center">
+                        <span>[ CARD_03 ]</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">UNBIASED</span>
+                    </div>
+                    <div class="h-44 bg-obsidian mb-6 overflow-hidden relative border border-slateBorder">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop" 
+                             alt="Objectivity" 
+                             class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-amberAccent/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
+                        OBJECTIVITY
+                    </h3>
+                    <p class="font-sans text-xs text-mutedText leading-relaxed font-light">
+                        Natural storytelling backed by facts and observation. We present the ground as it exists, giving the audience room to think and decide for themselves.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOUNDER FIELD COMMAND SECTION -->
+    <section id="field-command" class="py-24 px-6 md:px-16 lg:px-24 border-b border-slateBorder bg-charcoal/50 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="font-mono text-xs text-amberAccent mb-4 tracking-widest uppercase">
+                03 // FIELD DIRECTION & LEADERSHIP
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight uppercase text-bonewhite leading-tight">
+                        LEADERSHIP FROM THE TRENCHES.
+                    </h2>
+                    
+                    <div class="font-mono text-xs text-amberBright">
+                        // STATEMENT FROM THE FOUNDER & FIELD DIRECTOR
+                    </div>
+
+                    <blockquote class="font-sans text-base sm:text-lg text-bonewhite/90 font-light italic leading-relaxed border-l-2 border-amberAccent pl-6 py-2">
+                        "A documentary studio isn't built from a cozy glass office delegating tasks. It is built in the dust, on the streets, and inside the editing bay at 2 AM. 
+                        <br><br>
+                        I don't ask anyone on this team to do work I am not doing alongside them. As founder, my commitment is to lead from the front—setting the visual standard, taking the shots, and making sure our founding unit owns a real piece of what we build together."
+                    </blockquote>
+
+                    <div class="pt-4 font-mono text-xs text-mutedText">
+                        <span class="text-bonewhite font-bold">HARSH KUMAR</span> — Founder & Lead Field Director, Rethinker Media
+                    </div>
+                </div>
+
+                <!-- Visual Card Column -->
+                <div class="lg:col-span-5">
+                    <div class="reticle-box bg-obsidian border border-slateBorder p-6 relative">
+                        <div class="crosshair-tl font-mono text-[9px] text-amberAccent">OPERATIONAL_STANCE</div>
+                        <div class="crosshair-br font-mono text-[9px] text-amberAccent">01_CORE</div>
+                        
+                        <div class="aspect-square bg-charcoal border border-slateBorder mb-4 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Field Operations" 
+                                 class="w-full h-full object-cover contrast-125 grayscale hover:grayscale-0 transition-all duration-500">
+                            <div class="absolute bottom-3 left-3 bg-obsidian/90 px-3 py-1 font-mono text-[10px] text-amberBright border border-slateBorder">
+                                [ FIELD DIRECTING // DELHI-NCR HUB ]
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 font-mono text-[11px] text-mutedText border-t border-slateBorder pt-4">
+                            <div class="flex justify-between">
+                                <span>WORKETHIC:</span>
+                                <span class="text-bonewhite">FIELD-FIRST // LEAN UNIT</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>CULTURE:</span>
+                                <span class="text-bonewhite">MUTUAL RESPECT & EQUITY</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>STANDARD:</span>
+                                <span class="text-bonewhite">UNCOMPROMSED CRAFT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CALL TO ARMS & GATEWAY FOOTER -->
+    <section class="py-24 px-6 md:px-16 lg:px-24 bg-obsidian relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10">
+            
+            <div class="inline-block border border-amberAccent px-4 py-1.5 font-mono text-xs text-amberBright tracking-widest uppercase">
+                RECRUITMENT PIPELINE ACTIVE // PROJECT FIRST FRAME
+            </div>
+
+            <h2 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl tracking-tight text-bonewhite uppercase leading-none">
+                BUILD THE FOUNDING CORE WITH US.
+            </h2>
+
+            <p class="font-sans text-base sm:text-lg text-mutedText max-w-2xl mx-auto font-light leading-relaxed">
+                We are selecting our founding Cinematographer and Visual Editor for Project: First Frame. We don't care about corporate credentials—we care about grit, rhythm, and visual mastery.
+            </p>
+
+            <!-- Roles Breakdown Badge Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto text-left font-mono text-xs py-4">
+                <div class="border border-slateBorder bg-charcoal p-4 space-y-1">
+                    <div class="text-amberBright font-bold">01. CINEMATOGRAPHER TRACK</div>
+                    <div class="text-mutedText">Field Cinematography // 4K LOG</div>
+                    <div class="text-bonewhite font-semibold pt-2">3% Vested Equity Stake</div>
+                </div>
+                <div class="border border-slateBorder bg-charcoal p-4 space-y-1">
+                    <div class="text-amberBright font-bold">02. VISUAL EDITOR TRACK</div>
+                    <div class="text-mutedText">Narrative Pacing & Motion</div>
+                    <div class="text-bonewhite font-semibold pt-2">4% Vested Equity Stake</div>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <button onclick="openModal()" class="reticle-box bg-amberAccent hover:bg-amberBright text-obsidian font-mono text-sm font-bold tracking-widest px-10 py-5 transition-all duration-200 inline-flex items-center space-x-3">
+                    <span>VIEW ROADMAP & PRE-LAUNCH STATUS</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="font-mono text-[10px] text-mutedText tracking-widest uppercase pt-6">
+                PROCESSED VIA UNSTOP APPLICATION GATEWAY // STRICT 4-STAGE SELECTION PIPELINE
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slateBorder py-8 px-6 md:px-12 bg-charcoal font-mono text-xs text-mutedText flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <div>
+            © 2026 RETHINKER MEDIA (RETHINKER.MEDIA). ALL RIGHTS RESERVED.
+        </div>
+        <div class="flex space-x-6 text-sm">
+            <a href="https://www.linkedin.com/company/rethinker-media" target="_blank" class="hover:text-amberBright transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" class="hover:text-amberBright transition-colors"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="hover:text-amberBright transition-colors"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- 9. SELECTION ROADMAP MODAL (PRE-LAUNCH NOTICE STATE) -->
+    <div id="application-modal" class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6 transition-all duration-300">
+        <div class="reticle-box bg-charcoal border border-amberAccent/60 max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-mutedText hover:text-amberBright font-mono text-lg font-bold">
+                [✕]
+            </button>
+
+            <div class="font-mono text-xs text-amberBright mb-2 tracking-widest uppercase">
+                // RETHINKER MEDIA SELECTION PIPELINE
+            </div>
+
+            <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-bonewhite uppercase mb-4">
+                FOUNDING UNIT ROADMAP
+            </h3>
+
+            <!-- Strategic Pre-Launch Notice Header -->
+            <div class="mb-6 p-3 border border-amberAccent/40 bg-amberAccent/10 font-mono text-xs text-amberBright flex items-center space-x-2">
+                <i class="fa-solid fa-clock"></i>
+                <span>[ PRE-LAUNCH STATUS: APPLICATION PORTAL DEPLOYING SOON ]</span>
+            </div>
+
+            <div class="space-y-6 font-mono text-xs text-mutedText">
+                
+                <div class="border-l-2 border-amberAccent pl-4 space-y-1">
+                    <div class="text-bonewhite font-bold">STAGE 01 // UNSTOP APPLICATION & PORTFOLIO FILTER</div>
+                    <p class="font-sans text-xs">Submit your top 2-3 work cuts and answer core screening questions regarding independent vision.</p>
+                </div>
+
+                <div class="border-l-2 border-slateBorder pl-4 space-y-1">
+                    <div class="text-bonewhite font-bold">STAGE 02 // 48-HOUR PRACTICAL AUDIT</div>
+                    <p class="font-sans text-xs">Shortlisted Editors receive the Stage 2 Audio/Visual Vault; Cinematographers perform a guided local street-level capture (strictly open public spaces).</p>
+                </div>
+
+                <div class="border-l-2 border-slateBorder pl-4 space-y-1">
+                    <div class="text-bonewhite font-bold">STAGE 03 // 1-ON-1 NARRATIVE ALIGNMENT INTERVIEW</div>
+                    <p class="font-sans text-xs">Deep-dive technical review with Founder Harsh Kumar to assess vision, data hygiene, and operational fit.</p>
+                </div>
+
+                <div class="border-l-2 border-amberBright pl-4 space-y-1">
+                    <div class="text-bonewhite font-bold text-amberBright">STAGE 04 // 30-DAY PILOT (PROJECT: FIRST FRAME)</div>
+                    <p class="font-sans text-xs">Paid pilot sprint leading directly to vested equity onboarding (3% Cinematographer / 4% Editor).</p>
+                </div>
+
+            </div>
+
+            <!-- External Redirect Action -->
+            <div class="mt-8 pt-6 border-t border-slateBorder flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="font-mono text-[10px] text-mutedText">INITIAL VISUAL LOGS DEPLOYING BEFORE UNSTOP DROP</span>
+                <button onclick="closeModal()" class="w-full sm:w-auto bg-amberAccent hover:bg-amberBright text-obsidian font-mono text-xs font-bold px-6 py-3 tracking-widest text-center transition-all uppercase">
+                    ACKNOWLEDGE & CLOSE
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Live UTC Clock Script for Viewfinder Header
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getUTCHours()).padStart(2, '0');
+            const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+            document.getElementById('live-time').textContent = `${hours}:${minutes}:${seconds} UTC`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Application Modal Toggle logic
+        function openModal() {
+            document.getElementById('application-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('application-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close Modal when clicking outside container
+        window.onclick = function(event) {
+            const modal = document.getElementById('application-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
