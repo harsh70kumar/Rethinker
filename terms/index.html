@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOVERNANCE & TERMS // RETHINKER MEDIA</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -40,7 +37,7 @@
 
     <style>
         .bg-grain {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
         .reticle-box {
             position: relative;
@@ -60,25 +57,23 @@
 </head>
 <body class="bg-obsidian text-bonewhite font-sans antialiased selection:bg-amberAccent selection:text-obsidian relative bg-grain overflow-x-hidden">
 
-    <!-- TOP NAV BAR -->
     <nav class="sticky top-0 z-40 bg-obsidian/95 backdrop-blur-md border-b border-slateBorder py-4 px-6 md:px-12 flex justify-between items-center">
-        <a href="index.html" class="flex items-center space-x-3 group">
-            <div class="w-8 h-8 border border-amberAccent flex items-center justify-center bg-charcoal text-amberAccent font-mono font-bold text-sm">
-                RM
+        <a href="/" class="flex items-center space-x-3 group">
+            <div class="w-8 h-8 border border-amberAccent overflow-hidden flex items-center justify-center bg-charcoal group-hover:border-signalGold transition-colors">
+                <img src="https://www.rethinker.media/images/logo.jpg" alt="Rethinker Media Logo" class="w-full h-full object-cover">
             </div>
-            <span class="font-heading font-extrabold text-lg sm:text-xl tracking-tighter text-bonewhite">
+            <span class="font-heading font-extrabold text-lg sm:text-xl tracking-tighter text-bonewhite group-hover:text-amberBright transition-colors">
                 RETHINKER<span class="text-amberAccent">.</span>MEDIA
             </span>
         </a>
         <div class="font-mono text-xs text-amberBright tracking-widest uppercase hidden sm:block">
             // STUDIO GOVERNANCE & FRAMEWORK
         </div>
-        <a href="index.html" class="font-mono text-xs text-silverText hover:text-amberBright transition-colors">
+        <a href="/" class="font-mono text-xs text-silverText hover:text-amberBright transition-colors">
             ← BACK TO HUB
         </a>
     </nav>
 
-    <!-- HEADER SECTION -->
     <header class="py-20 px-6 md:px-16 lg:px-24 border-b border-slateBorder max-w-5xl mx-auto">
         <div class="font-mono text-xs text-signalGold mb-4 tracking-widest uppercase">
             [ LEGAL & OPERATIONAL TRANSPARENCY ]
@@ -87,30 +82,27 @@
             FOUNDING GOVERNANCE <span class="text-amberAccent">&</span> TERMS.
         </h1>
         <p class="font-sans text-base sm:text-lg text-silverText font-normal leading-relaxed mb-8">
-            At Rethinker Media, we operate with absolute clarity. This document outlines our structural framework for pre-incorporation equity, milestone vesting schedules, intellectual property rights, and operational discipline.
+            At Rethinker Media, we operate with absolute clarity. This document outlines our structural framework for pre-incorporation equity, milestone vesting schedules, intellectual property rights, and internal operational discipline.
         </p>
 
-        <!-- REGISTRATION POLICY HIGHLIGHT BOX -->
         <div class="reticle-box bg-charcoal border border-amberAccent/60 p-6 space-y-3 font-mono text-xs">
             <div class="text-amberBright font-bold flex items-center space-x-2">
                 <i class="fa-solid fa-triangle-exclamation"></i>
                 <span>[ OFFICIAL REGISTRATION POLICY & TIMELINE ]</span>
             </div>
             <p class="font-sans text-xs text-silverText leading-relaxed">
-                Rethinker Media operates lean during early principal photography. On Day 1, all founding equity promises are secured via a legally binding <strong class="text-bonewhite">Pre-Incorporation Memorandum of Understanding (MoU)</strong>. Official Private Limited company incorporation is hard-coded into our roadmap for <strong class="text-amberBright">Month 6</strong>—synchronized precisely with our first vesting cliff and initial equity issuance.
+                Rethinker Media operates lean during early principal photography. On Day 1, all founding equity promises are secured via a legally binding Pre-Incorporation Memorandum and a clear operational roadmap before any formal company registration.
             </p>
         </div>
     </header>
 
-    <!-- CONTENT SECTIONS -->
     <main class="py-16 px-6 md:px-16 lg:px-24 max-w-5xl mx-auto space-y-16 font-sans text-silverText">
 
-        <!-- SECTION 01: EQUITY ARCHITECTURE -->
         <section class="space-y-6 border-l-2 border-amberAccent pl-6">
             <div class="font-mono text-xs text-amberBright uppercase tracking-widest">01 // EQUITY POOL & CAP TABLE STRUCTURE</div>
             <h2 class="font-heading font-bold text-2xl sm:text-3xl text-bonewhite uppercase">The Capped Team Pool</h2>
             <p class="font-normal leading-relaxed">
-                To ensure absolute executive control, long-term strategic vision, and brand stability, Founder ownership is permanently locked at a minimum of 90%. The remaining 10% is established as a dedicated <strong class="text-bonewhite">Early Team Equity Pool</strong> reserved exclusively for our foundational core.
+                To ensure absolute executive control, long-term strategic vision, and brand stability, Founder ownership is permanently locked at a minimum of 90% with a capped internal creative pool designed to preserve long-term alignment and operational clarity.
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 font-mono text-xs">
                 <div class="bg-charcoal border border-slateBorder p-4 space-y-1">
@@ -124,15 +116,14 @@
             </div>
         </section>
 
-        <!-- SECTION 02: VESTING & INCORPORATION TIMELINE -->
         <section class="space-y-6 border-l-2 border-slateBorder pl-6">
             <div class="font-mono text-xs text-amberBright uppercase tracking-widest">02 // VESTING SCHEDULE & CORPORATE MILESTONES</div>
             <h2 class="font-heading font-bold text-2xl sm:text-3xl text-bonewhite uppercase">Pre-Incorporation MoU & Month 6 Milestone</h2>
             <p class="font-normal leading-relaxed">
-                During the initial 30-day pilot sprint (Project: First Frame), no equity is vested. Upon successful completion and transition into the long-term unit, equity is bound via our formal Pre-Incorporation MoU. 
+                During the initial 30-day pilot sprint (Project: First Frame), no equity is vested. Upon successful completion of the pilot, a formal vesting roadmap begins with a clear cliff and monthly accrual structure.
             </p>
             <p class="font-normal leading-relaxed">
-                Official Private Limited incorporation is executed at <strong class="text-bonewhite">Month 6</strong>—coinciding perfectly with our first vesting cliff.
+                Official Private Limited incorporation is executed at Month 6, coinciding perfectly with our first vesting cliff and the beginning of formal ownership recognition.
             </p>
             <ul class="space-y-3 font-mono text-xs text-bonewhite">
                 <li class="flex items-center space-x-3 bg-charcoal p-3 border border-slateBorder">
@@ -154,34 +145,40 @@
             </ul>
         </section>
 
-        <!-- SECTION 03: SAFEGUARDS & PROTECTIONS -->
         <section class="space-y-6 border-l-2 border-slateBorder pl-6">
             <div class="font-mono text-xs text-amberBright uppercase tracking-widest">03 // STUDIO SAFEGUARDS & MALPRACTICE PROTECTION</div>
             <h2 class="font-heading font-bold text-2xl sm:text-3xl text-bonewhite uppercase">Operational Integrity & Buyback Clauses</h2>
             <p class="font-normal leading-relaxed">
-                To protect Rethinker Media from stagnation or bad-faith exits ("cliff raiding"), our agreements enforce strict, industry-standard protections:
+                To protect Rethinker Media from stagnation or bad-faith exits, our agreements enforce strict, industry-standard protections designed to preserve studio stability, creative control, and legal clarity.
             </p>
             <div class="space-y-4 font-sans text-sm">
                 <div class="bg-charcoal border border-slateBorder p-6 space-y-2">
                     <h3 class="font-mono text-xs font-bold text-amberBright uppercase">[ A. INSTANT IP ASSIGNMENT ]</h3>
-                    <p class="text-xs text-silverText font-normal">All raw footage, audio stems, project files, and rendered assets created during production belong 100% to Rethinker Media from the exact moment of capture, regardless of physical hardware used.</p>
+                    <p class="text-xs text-silverText font-normal">All raw footage, audio stems, project files, and rendered assets created during production belong 100% to Rethinker Media from the moment they are created.</p>
                 </div>
                 <div class="bg-charcoal border border-slateBorder p-6 space-y-2">
                     <h3 class="font-mono text-xs font-bold text-amberBright uppercase">[ B. NOMINAL SHARE BUYBACK / CLAWBACK (ROFR) ]</h3>
-                    <p class="text-xs text-silverText font-normal">If a contributor departs prior to full vesting, the studio holds the absolute legal right to buy back all unvested or vested shares for a nominal price (₹1), preventing inactive holders from occupying cap table space.</p>
+                    <p class="text-xs text-silverText font-normal">If a contributor departs prior to full vesting, the studio holds the absolute legal right to buy back all unvested or vested shares according to the agreed contractual framework.</p>
                 </div>
                 <div class="bg-charcoal border border-slateBorder p-6 space-y-2">
                     <h3 class="font-mono text-xs font-bold text-amberBright uppercase">[ C. ACTIVE CONTRIBUTION REVENUE SPLITS ]</h3>
-                    <p class="text-xs text-silverText font-normal">Any financial payouts (ad revenue splits, brand bonuses) are strictly tied to active, ongoing monthly production. The moment a contributor exits, cash flow shares drop to zero.</p>
+                    <p class="text-xs text-silverText font-normal">Any financial payouts, ad revenue splits, or brand bonuses are strictly tied to active, ongoing monthly production. The moment contribution stops, associated payouts stop with it.</p>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="border-t border-slateBorder py-8 px-6 md:px-12 bg-charcoal font-mono text-xs text-silverText flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 mt-20">
         <div>
             © 2026 RETHINKER MEDIA (RETHINKER.MEDIA). ALL RIGHTS RESERVED.
         </div>
-        <div class="flex items-center
+        <div class="flex items-center space-x-6 text-sm">
+            <span class="text-[10px] text-mutedText tracking-widest">// GOVERNANCE ACTIVE</span>
+            <a href="https://www.instagram.com/rethinker_media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@rethinker-media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>
