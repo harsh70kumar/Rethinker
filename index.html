@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -21,8 +21,10 @@
                         obsidian: '#080808',
                         charcoal: '#121212',
                         bonewhite: '#E8E6E1',
+                        silverText: '#C5C2BA',
                         amberAccent: '#C85A17',
                         amberBright: '#D96B27',
+                        signalGold: '#E5A93B',
                         slateBorder: '#1E1E1E',
                         mutedText: '#888888'
                     },
@@ -101,10 +103,10 @@
 </head>
 <body class="bg-obsidian text-bonewhite font-sans antialiased selection:bg-amberAccent selection:text-obsidian relative bg-grain overflow-x-hidden">
 
-    <!-- 1. TOP VIEWFINDER TICKER (FIXED FLUSH) -->
+    <!-- 1. TOP VIEWFINDER TICKER (FLUSH ALIGNED) -->
     <div id="top-ticker" class="fixed top-0 left-0 right-0 z-50 bg-obsidian border-b border-slateBorder py-1 px-4 text-xs font-mono text-mutedText flex justify-between items-center select-none h-[29px]">
         <div class="flex items-center space-x-3 overflow-hidden whitespace-nowrap">
-            <span class="inline-block w-2 h-2 rounded-full bg-amberAccent animate-pulse-slow"></span>
+            <span class="inline-block w-2 h-2 rounded-full bg-signalGold animate-pulse-slow"></span>
             <span class="text-bonewhite font-semibold tracking-wider">[ SYSTEM: ONLINE ]</span>
             <span class="hidden sm:inline text-slateBorder">//</span>
             <span class="hidden sm:inline">[ BASE: MEERUT / DELHI-NCR ]</span>
@@ -115,15 +117,16 @@
         </div>
         <div class="flex items-center space-x-4 shrink-0 text-[10px] sm:text-xs">
             <span id="live-time" class="text-bonewhite font-mono">00:00:00 UTC</span>
-            <span class="text-amberAccent font-bold">REC ●</span>
+            <span class="text-signalGold font-bold">REC ●</span>
         </div>
     </div>
 
-    <!-- 2. NAVIGATION BAR (FLUSH ATTACHED TO TICKER) -->
+    <!-- 2. NAVIGATION BAR -->
     <nav class="sticky top-[29px] z-40 bg-obsidian/95 backdrop-blur-md border-b border-slateBorder py-3.5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
         <a href="#" class="flex items-center space-x-3 group">
-            <div class="w-8 h-8 border border-amberAccent flex items-center justify-center font-mono text-amberAccent font-bold text-sm group-hover:bg-amberAccent group-hover:text-obsidian transition-colors">
-                RM
+            <!-- Custom GitHub Logo Integration -->
+            <div class="w-8 h-8 border border-amberAccent overflow-hidden flex items-center justify-center bg-charcoal group-hover:border-signalGold transition-colors">
+                <img src="images/logo.jpg" alt="Rethinker Media Logo" class="w-full h-full object-cover">
             </div>
             <span class="font-heading font-extrabold text-lg sm:text-xl tracking-tighter text-bonewhite group-hover:text-amberBright transition-colors">
                 RETHINKER<span class="text-amberAccent">.</span>MEDIA
@@ -156,7 +159,7 @@
         <!-- Hero Content -->
         <div class="max-w-5xl z-10 my-auto">
             <div class="inline-flex items-center space-x-2 border border-amberAccent/40 bg-amberAccent/10 px-3 py-1 text-xs font-mono text-amberBright mb-6">
-                <i class="fa-solid fa-circle text-[8px]"></i>
+                <i class="fa-solid fa-circle text-[8px] text-signalGold"></i>
                 <span>INDEPENDENT DOCUMENTARY STUDIO</span>
             </div>
             
@@ -164,7 +167,7 @@
                 REALITY DOESN’T WAIT FOR <span class="text-transparent bg-clip-text bg-gradient-to-r from-amberAccent via-amberBright to-bonewhite">SCRIPT APPROVAL.</span>
             </h1>
 
-            <p class="text-base sm:text-xl font-sans text-mutedText max-w-2xl font-light leading-relaxed mb-10">
+            <p class="text-base sm:text-xl font-sans text-silverText max-w-2xl font-normal leading-relaxed mb-10">
                 Rethinker Media is an on-the-ground, independent documentary studio. We reject polished corporate fluff, fake narratives, and comfortable desk jobs to capture objective reality, raw friction, and uncompromised street-level truth.
             </p>
 
@@ -227,15 +230,15 @@
                 WE ARE INSIDERS LOOKING OUTWARD.
             </h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 font-sans text-mutedText leading-relaxed">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 font-sans text-silverText leading-relaxed">
                 <div class="border-l border-amberAccent/40 pl-6 space-y-6">
                     <h3 class="font-mono text-sm font-bold text-bonewhite uppercase tracking-wider">
                         [ THE NOISE vs. THE TRUTH ]
                     </h3>
-                    <p class="text-base font-light">
+                    <p class="text-base font-normal">
                         There are a thousand creators chasing short-term viral algorithms, and a thousand corporate media houses manufacturing artificial narratives for boardrooms. We chose a different path.
                     </p>
-                    <p class="text-base font-light">
+                    <p class="text-base font-normal">
                         Rethinker Media operates directly on the streets. We are an insider native looking outward—documenting the events, friction, and hidden textures of the ground with cinematic rigor and total objectivity.
                     </p>
                 </div>
@@ -244,11 +247,11 @@
                     <h3 class="font-mono text-sm font-bold text-bonewhite uppercase tracking-wider">
                         [ DEDICATION & ETHICS OVER SHORTCUTS ]
                     </h3>
-                    <p class="text-base font-light">
+                    <p class="text-base font-normal">
                         We do not believe a studio is defined by venture cash or expensive corporate offices. A legendary studio is built by dedication, innovative vision, raw experience, and uncompromising ethics.
                     </p>
-                    <p class="text-base font-light">
-                        Our purpose is service to society through the most valuable currency in media: <strong class="text-bonewhite font-normal">absolute, unfiltered perspective.</strong>
+                    <p class="text-base font-normal">
+                        Our purpose is service to society through the most valuable currency in media: <strong class="text-bonewhite font-medium">absolute, unfiltered perspective.</strong>
                     </p>
                 </div>
             </div>
@@ -267,7 +270,7 @@
                         THE VIBE MATRIX
                     </h2>
                 </div>
-                <p class="font-mono text-xs text-mutedText mt-4 md:mt-0 max-w-xs">
+                <p class="font-mono text-xs text-silverText mt-4 md:mt-0 max-w-xs">
                     // RULE: The mood of the camera must mirror the honest reality of the ground.
                 </p>
             </div>
@@ -290,7 +293,7 @@
                     <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
                         EXPLORATION
                     </h3>
-                    <p class="font-sans text-xs text-mutedText leading-relaxed font-light">
+                    <p class="font-sans text-xs text-silverText leading-relaxed font-normal">
                         Visiting, observing, and experiencing without pre-packaged scripts. When the environment is alive and vibrant, our visual tone is open, curious, and natural.
                     </p>
                 </div>
@@ -310,7 +313,7 @@
                     <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
                         REALITY
                     </h3>
-                    <p class="font-sans text-xs text-mutedText leading-relaxed font-light">
+                    <p class="font-sans text-xs text-silverText leading-relaxed font-normal">
                         Zero artificial cheerfulness. Zero manufactured outrage. If a place is tough or corrupt, our vibe reflects that exact gravity with unflinching honesty.
                     </p>
                 </div>
@@ -330,7 +333,7 @@
                     <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
                         OBJECTIVITY
                     </h3>
-                    <p class="font-sans text-xs text-mutedText leading-relaxed font-light">
+                    <p class="font-sans text-xs text-silverText leading-relaxed font-normal">
                         Natural storytelling backed by facts and observation. We present the ground as it exists, giving the audience room to think and decide for themselves.
                     </p>
                 </div>
@@ -358,7 +361,7 @@
                         // STATEMENT FROM THE FOUNDER & FIELD DIRECTOR
                     </div>
 
-                    <blockquote class="font-sans text-base sm:text-lg text-bonewhite/90 font-light italic leading-relaxed border-l-2 border-amberAccent pl-6 py-2">
+                    <blockquote class="font-sans text-base sm:text-lg text-silverText font-normal italic leading-relaxed border-l-2 border-amberAccent pl-6 py-2">
                         "A documentary studio isn't built from a cozy glass office delegating tasks. It is built in the dust, on the streets, and inside the editing bay at 2 AM. 
                         <br><br>
                         I don't ask anyone on this team to do work I am not doing alongside them. As founder, my commitment is to lead from the front—setting the visual standard, taking the shots, and making sure our founding unit owns a real piece of what we build together."
@@ -384,7 +387,7 @@
                             </div>
                         </div>
 
-                        <div class="space-y-2 font-mono text-[11px] text-mutedText border-t border-slateBorder pt-4">
+                        <div class="space-y-2 font-mono text-[11px] text-silverText border-t border-slateBorder pt-4">
                             <div class="flex justify-between">
                                 <span>WORKETHIC:</span>
                                 <span class="text-bonewhite">FIELD-FIRST // LEAN UNIT</span>
@@ -417,7 +420,7 @@
                 BUILD THE FOUNDING CORE WITH US.
             </h2>
 
-            <p class="font-sans text-base sm:text-lg text-mutedText max-w-2xl mx-auto font-light leading-relaxed">
+            <p class="font-sans text-base sm:text-lg text-silverText max-w-2xl mx-auto font-normal leading-relaxed">
                 We are selecting our founding Cinematographer and Visual Editor for Project: First Frame. We don't care about corporate credentials—we care about grit, rhythm, and visual mastery.
             </p>
 
@@ -425,12 +428,12 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto text-left font-mono text-xs py-4">
                 <div class="border border-slateBorder bg-charcoal p-4 space-y-1">
                     <div class="text-amberBright font-bold">01. CINEMATOGRAPHER TRACK</div>
-                    <div class="text-mutedText">Field Cinematography // 4K LOG</div>
+                    <div class="text-silverText">Field Cinematography // 4K LOG</div>
                     <div class="text-bonewhite font-semibold pt-2">3% Vested Equity Stake</div>
                 </div>
                 <div class="border border-slateBorder bg-charcoal p-4 space-y-1">
                     <div class="text-amberBright font-bold">02. VISUAL EDITOR TRACK</div>
-                    <div class="text-mutedText">Narrative Pacing & Motion</div>
+                    <div class="text-silverText">Narrative Pacing & Motion</div>
                     <div class="text-bonewhite font-semibold pt-2">4% Vested Equity Stake</div>
                 </div>
             </div>
@@ -448,19 +451,20 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-slateBorder py-8 px-6 md:px-12 bg-charcoal font-mono text-xs text-mutedText flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-        <div>
+    <!-- FOOTER WITH VIEWABLE ACTIVE SOCIAL HANDLES -->
+    <footer class="border-t border-slateBorder py-8 px-6 md:px-12 bg-charcoal font-mono text-xs text-silverText flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <div class="tracking-wider">
             © 2026 RETHINKER MEDIA (RETHINKER.MEDIA). ALL RIGHTS RESERVED.
         </div>
-        <div class="flex space-x-6 text-sm">
-            <a href="https://www.linkedin.com/company/rethinker-media" target="_blank" class="hover:text-amberBright transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#" class="hover:text-amberBright transition-colors"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" class="hover:text-amberBright transition-colors"><i class="fa-brands fa-instagram"></i></a>
+        <div class="flex items-center space-x-6 text-sm">
+            <span class="text-[10px] text-mutedText tracking-widest">// CONNECT:</span>
+            <a href="https://www.linkedin.com/company/rethinker-media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/@rethinker-media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/rethinker_media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
     </footer>
 
-    <!-- 9. SELECTION ROADMAP MODAL (PRE-LAUNCH NOTICE STATE) -->
+    <!-- 9. SELECTION ROADMAP MODAL -->
     <div id="application-modal" class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6 transition-all duration-300">
         <div class="reticle-box bg-charcoal border border-amberAccent/60 max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
             
@@ -483,7 +487,7 @@
                 <span>[ PRE-LAUNCH STATUS: APPLICATION PORTAL DEPLOYING SOON ]</span>
             </div>
 
-            <div class="space-y-6 font-mono text-xs text-mutedText">
+            <div class="space-y-6 font-mono text-xs text-silverText">
                 
                 <div class="border-l-2 border-amberAccent pl-4 space-y-1">
                     <div class="text-bonewhite font-bold">STAGE 01 // UNSTOP APPLICATION & PORTFOLIO FILTER</div>
