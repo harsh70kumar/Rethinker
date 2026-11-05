@@ -121,7 +121,7 @@
         </div>
     </div>
 
-    <!-- 2. NAVIGATION BAR (DECLUTTERED) -->
+    <!-- 2. NAVIGATION BAR -->
     <nav class="sticky top-[29px] z-40 bg-obsidian/95 backdrop-blur-md border-b border-slateBorder py-3.5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
         <a href="#" class="flex items-center space-x-3 group">
             <!-- Custom GitHub Logo Integration -->
@@ -140,7 +140,22 @@
             <a href="#field-command" class="hover:text-amberBright transition-colors">03// Field Command</a>
             <a href="terms" class="text-amberBright hover:text-bonewhite transition-colors">04// Governance</a>
         </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex items-center md:hidden">
+            <button onclick="toggleMobileMenu()" class="text-amberBright hover:text-bonewhite text-xl p-2 focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed top-[calc(29px+57px)] left-0 right-0 z-30 bg-obsidian/98 border-b border-slateBorder px-6 py-6 space-y-4 font-mono text-xs uppercase tracking-widest text-mutedText backdrop-blur-md transition-all">
+        <a href="#manifesto" onclick="toggleMobileMenu()" class="block hover:text-amberBright transition-colors py-2 border-b border-slateBorder/50">01// Manifesto</a>
+        <a href="#vibe-matrix" onclick="toggleMobileMenu()" class="block hover:text-amberBright transition-colors py-2 border-b border-slateBorder/50">02// Vibe Matrix</a>
+        <a href="#field-command" onclick="toggleMobileMenu()" class="block hover:text-amberBright transition-colors py-2 border-b border-slateBorder/50">03// Field Command</a>
+        <a href="terms" onclick="toggleMobileMenu()" class="block text-amberBright hover:text-bonewhite transition-colors py-2 font-bold">[ 04// GOVERNANCE & TERMS ]</a>
+    </div>
 
     <!-- 3. HERO SECTION -->
     <section class="relative min-h-[85vh] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20 border-b border-slateBorder overflow-hidden">
@@ -446,13 +461,13 @@
     </section>
 
     <!-- FOOTER WITH VIEWABLE ACTIVE SOCIAL HANDLES & GOVERNANCE LINK -->
-    <footer class="border-t border-slateBorder py-8 px-6 md:px-12 bg-charcoal font-mono text-xs text-silverText flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <div class="tracking-wider text-center md:text-left">
+    <footer class="border-t border-slateBorder py-8 px-6 md:px-12 bg-charcoal font-mono text-xs text-silverText flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center md:text-left">
+        <div class="tracking-wider">
             © 2026 RETHINKER MEDIA (RETHINKER.MEDIA). ALL RIGHTS RESERVED.
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm">
             <a href="terms" class="text-amberBright hover:text-bonewhite transition-colors text-xs tracking-widest uppercase font-bold">[ GOVERNANCE & TERMS ]</a>
-            <span class="text-[10px] text-mutedText tracking-widest">// CONNECT:</span>
+            <span class="text-[10px] text-mutedText tracking-widest hidden sm:inline">// CONNECT:</span>
             <a href="https://www.linkedin.com/company/rethinker-media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://www.youtube.com/@rethinker-media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
             <a href="https://www.instagram.com/rethinker_media" target="_blank" class="text-bonewhite hover:text-amberBright transition-colors text-base" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -531,6 +546,18 @@
         }
         setInterval(updateClock, 1000);
         updateClock();
+
+        // Mobile Menu Toggle logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars';
+            } else {
+                icon.className = 'fa-solid fa-xmark';
+            }
+        }
 
         // Application Modal Toggle logic
         function openModal() {
