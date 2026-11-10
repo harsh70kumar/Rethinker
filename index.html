@@ -105,7 +105,7 @@
 </head>
 <body class="bg-obsidian text-bonewhite font-sans antialiased selection:bg-amberAccent selection:text-obsidian relative bg-grain overflow-x-hidden">
 
-    <!-- 1. TOP VIEWFINDER TICKER (FLUSH ALIGNED) -->
+    <!-- 1. TOP VIEWFINDER TICKER -->
     <div id="top-ticker" class="fixed top-0 left-0 right-0 z-50 bg-obsidian border-b border-slateBorder py-1 px-4 text-xs font-mono text-mutedText flex justify-between items-center select-none h-[29px]">
         <div class="flex items-center space-x-3 overflow-hidden whitespace-nowrap">
             <span class="inline-block w-2 h-2 rounded-full bg-signalGold animate-pulse-slow"></span>
@@ -113,7 +113,7 @@
             <span class="hidden sm:inline text-slateBorder">//</span>
             <span class="hidden sm:inline">[ BASE: MEERUT / DELHI-NCR ]</span>
             <span class="hidden md:inline text-slateBorder">//</span>
-            <span class="hidden md:inline text-amberBright">[ STATUS: DEPLOYED IN FIELD ]</span>
+            <span class="hidden md:inline text-amberBright">[ STATUS: DAY 10 RECRUITMENT DEPLOYING ]</span>
             <span class="hidden lg:inline text-slateBorder">//</span>
             <span class="hidden lg:inline text-mutedText">[ PROJECT: FIRST FRAME ]</span>
         </div>
@@ -126,7 +126,6 @@
     <!-- 2. NAVIGATION BAR -->
     <nav class="sticky top-[29px] z-40 bg-obsidian/95 backdrop-blur-md border-b border-slateBorder py-3.5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
         <a href="#" class="flex items-center space-x-3 group">
-            <!-- Custom GitHub Logo Integration -->
             <div class="w-8 h-8 border border-amberAccent overflow-hidden flex items-center justify-center bg-charcoal group-hover:border-signalGold transition-colors">
                 <img src="images/logo.jpg" alt="Rethinker Media Logo" class="w-full h-full object-cover">
             </div>
@@ -135,12 +134,12 @@
             </span>
         </a>
 
-        <!-- Desktop Menu with Governance Link -->
+        <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-6 lg:space-x-8 text-xs font-mono uppercase tracking-widest text-mutedText">
             <a href="#manifesto" class="hover:text-amberBright transition-colors">01// Manifesto</a>
             <a href="#vibe-matrix" class="hover:text-amberBright transition-colors">02// Vibe Matrix</a>
-            <a href="#field-command" class="hover:text-amberBright transition-colors">03// Field Command</a>
-            <a href="terms" class="text-amberBright hover:text-bonewhite transition-colors">04// Governance</a>
+            <a href="#recruitment" class="text-amberBright hover:text-bonewhite transition-colors">03// Founding Unit</a>
+            <a href="terms" class="hover:text-bonewhite transition-colors">04// Governance</a>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
@@ -155,45 +154,49 @@
     <div id="mobile-menu" class="hidden md:hidden fixed top-[calc(29px+57px)] left-0 right-0 z-30 bg-obsidian/98 border-b border-slateBorder px-6 py-6 space-y-4 font-mono text-xs uppercase tracking-widest text-mutedText backdrop-blur-md transition-all">
         <a href="#manifesto" onclick="toggleMobileMenu()" class="block hover:text-amberBright transition-colors py-2 border-b border-slateBorder/50">01// Manifesto</a>
         <a href="#vibe-matrix" onclick="toggleMobileMenu()" class="block hover:text-amberBright transition-colors py-2 border-b border-slateBorder/50">02// Vibe Matrix</a>
-        <a href="#field-command" onclick="toggleMobileMenu()" class="block hover:text-amberBright transition-colors py-2 border-b border-slateBorder/50">03// Field Command</a>
-        <a href="terms" onclick="toggleMobileMenu()" class="block text-amberBright hover:text-bonewhite transition-colors py-2 font-bold">[ 04// GOVERNANCE & TERMS ]</a>
+        <a href="#recruitment" onclick="toggleMobileMenu()" class="block text-amberBright hover:text-bonewhite transition-colors py-2 border-b border-slateBorder/50">03// Founding Unit</a>
+        <a href="terms" onclick="toggleMobileMenu()" class="block text-bonewhite hover:text-amberBright transition-colors py-2 font-bold">[ 04// GOVERNANCE & TERMS ]</a>
     </div>
 
     <!-- 3. HERO SECTION -->
     <section class="relative min-h-[85vh] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20 border-b border-slateBorder overflow-hidden">
-        <!-- Corner Viewfinder Marks -->
         <div class="crosshair-tl">+ 00.12.94</div>
         <div class="crosshair-tr">RAW // 4K LOG</div>
         <div class="crosshair-bl">ISO 800 // 24FPS</div>
         <div class="crosshair-br">CAM_01 // ACTIVE</div>
 
-        <!-- Hero Content -->
         <div class="max-w-5xl z-10 my-auto">
             <div class="inline-flex items-center space-x-2 border border-amberAccent/40 bg-amberAccent/10 px-3 py-1 text-xs font-mono text-amberBright mb-6">
                 <i class="fa-solid fa-circle text-[8px] text-signalGold"></i>
-                <span>INDEPENDENT DOCUMENTARY STUDIO</span>
+                <span>INDEPENDENT DOCUMENTARY STUDIO // MEERUT & DELHI-NCR</span>
             </div>
             
             <h1 class="font-heading font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-bonewhite uppercase leading-[0.95] mb-8">
                 REALITY DOESN’T WAIT FOR <span class="text-transparent bg-clip-text bg-gradient-to-r from-amberAccent via-amberBright to-bonewhite">SCRIPT APPROVAL.</span>
             </h1>
 
-            <p class="text-base sm:text-xl font-sans text-silverText max-w-2xl font-normal leading-relaxed mb-10">
+            <p class="text-base sm:text-xl font-sans text-silverText max-w-2xl font-normal leading-relaxed mb-8">
                 Rethinker Media is an on-the-ground, independent documentary studio. We reject polished corporate fluff, fake narratives, and comfortable desk jobs to capture objective reality, raw friction, and uncompromised street-level truth.
             </p>
 
+            <!-- Criteria Badge Bar -->
+            <div class="flex flex-wrap items-center gap-3 font-mono text-xs text-silverText mb-10">
+                <span class="border border-slateBorder bg-charcoal px-3 py-1.5 text-bonewhite"><i class="fa-solid fa-location-dot text-amberBright mr-1.5"></i> BASE: MEERUT / DELHI-NCR</span>
+                <span class="border border-slateBorder bg-charcoal px-3 py-1.5 text-bonewhite"><i class="fa-solid fa-user-graduate text-amberBright mr-1.5"></i> FRESHERS ONLY (0–2 YRS)</span>
+                <span class="border border-slateBorder bg-charcoal px-3 py-1.5 text-signalGold"><i class="fa-solid fa-scale-balanced mr-1.5"></i> EQUITY-BACKED FOUNDING TRACK</span>
+            </div>
+
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 font-mono text-xs">
-                <a href="#manifesto" class="bg-amberAccent hover:bg-amberBright text-obsidian px-8 py-4 font-bold tracking-widest text-center transition-all duration-200 flex items-center justify-center space-x-2">
-                    <span>EXPLORE THE WORK</span>
+                <a href="#recruitment" class="bg-amberAccent hover:bg-amberBright text-obsidian px-8 py-4 font-bold tracking-widest text-center transition-all duration-200 flex items-center justify-center space-x-2">
+                    <span>DAY 10 FOUNDING UNIT DROP</span>
                     <i class="fa-solid fa-arrow-down text-xs"></i>
                 </a>
                 <button onclick="openModal()" class="border border-slateBorder hover:border-amberAccent text-bonewhite hover:text-amberBright px-8 py-4 font-bold tracking-widest text-center transition-all duration-200 bg-charcoal/50">
-                    CORE ROSTER [OPENING SOON]
+                    VIEW SELECTION ROADMAP
                 </button>
             </div>
         </div>
 
-        <!-- Background Grid Lines Overlay -->
         <div class="absolute inset-0 pointer-events-none opacity-20 flex justify-between px-12">
             <div class="w-px h-full bg-slateBorder"></div>
             <div class="w-px h-full bg-slateBorder hidden md:block"></div>
@@ -286,9 +289,7 @@
                 </p>
             </div>
 
-            <!-- 3-Column Card Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
                 <!-- Card 1 -->
                 <div class="reticle-box bg-charcoal border border-slateBorder p-8 group hover:border-amberAccent transition-all duration-300 relative overflow-hidden">
                     <div class="font-mono text-xs text-amberAccent mb-6 flex justify-between items-center">
@@ -296,14 +297,9 @@
                         <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">RAW_FEED</span>
                     </div>
                     <div class="h-44 bg-obsidian mb-6 overflow-hidden relative border border-slateBorder">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" 
-                             alt="Exploration" 
-                             class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-amberAccent/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" alt="Exploration" class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
-                        EXPLORATION
-                    </h3>
+                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">EXPLORATION</h3>
                     <p class="font-sans text-xs text-silverText leading-relaxed font-normal">
                         Visiting, observing, and experiencing without pre-packaged scripts. When the environment is alive and vibrant, our visual tone is open, curious, and natural.
                     </p>
@@ -316,14 +312,9 @@
                         <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">FIELD_TESTED</span>
                     </div>
                     <div class="h-44 bg-obsidian mb-6 overflow-hidden relative border border-slateBorder">
-                        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=800&auto=format&fit=crop" 
-                             alt="Reality" 
-                             class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-amberAccent/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=800&auto=format&fit=crop" alt="Reality" class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
-                        REALITY
-                    </h3>
+                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">REALITY</h3>
                     <p class="font-sans text-xs text-silverText leading-relaxed font-normal">
                         Zero artificial cheerfulness. Zero manufactured outrage. If a place is tough or corrupt, our vibe reflects that exact gravity with unflinching honesty.
                     </p>
@@ -336,133 +327,91 @@
                         <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">UNBIASED</span>
                     </div>
                     <div class="h-44 bg-obsidian mb-6 overflow-hidden relative border border-slateBorder">
-                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop" 
-                             alt="Objectivity" 
-                             class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-                        <div class="absolute inset-0 bg-amberAccent/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop" alt="Objectivity" class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">
-                        OBJECTIVITY
-                    </h3>
+                    <h3 class="font-heading font-bold text-xl text-bonewhite uppercase mb-3 group-hover:text-amberBright transition-colors">OBJECTIVITY</h3>
                     <p class="font-sans text-xs text-silverText leading-relaxed font-normal">
                         Natural storytelling backed by facts and observation. We present the ground as it exists, giving the audience room to think and decide for themselves.
                     </p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 7. FOUNDER FIELD COMMAND SECTION -->
-    <section id="field-command" class="py-24 px-6 md:px-16 lg:px-24 border-b border-slateBorder bg-charcoal/50 relative">
-        <div class="max-w-6xl mx-auto">
-            <div class="font-mono text-xs text-amberAccent mb-4 tracking-widest uppercase">
-                03 // FIELD DIRECTION & LEADERSHIP
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Text Column -->
-                <div class="lg:col-span-7 space-y-6">
-                    <h2 class="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight uppercase text-bonewhite leading-tight">
-                        LEADERSHIP FROM THE TRENCHES.
-                    </h2>
-                    
-                    <div class="font-mono text-xs text-amberBright">
-                        // STATEMENT FROM THE FOUNDER & FIELD DIRECTOR
-                    </div>
-
-                    <blockquote class="font-sans text-base sm:text-lg text-silverText font-normal italic leading-relaxed border-l-2 border-amberAccent pl-6 py-2">
-                        "A documentary studio isn't built from a cozy glass office delegating tasks. It is built in the dust, on the streets, and inside the editing bay at 2 AM. 
-                        <br><br>
-                        I don't ask anyone on this team to do work I am not doing alongside them. As founder, my commitment is to lead from the front—setting the visual standard, taking the shots, and making sure our founding unit owns a real piece of what we build together."
-                    </blockquote>
-
-                    <div class="pt-4 font-mono text-xs text-mutedText">
-                        <span class="text-bonewhite font-bold">HARSH KUMAR</span> — Founder & Lead Field Director, Rethinker Media
-                    </div>
-                </div>
-
-                <!-- Visual Card Column -->
-                <div class="lg:col-span-5">
-                    <div class="reticle-box bg-obsidian border border-slateBorder p-6 relative">
-                        <div class="crosshair-tl font-mono text-[9px] text-amberAccent">OPERATIONAL_STANCE</div>
-                        <div class="crosshair-br font-mono text-[9px] text-amberAccent">01_CORE</div>
-                        
-                        <div class="aspect-square bg-charcoal border border-slateBorder mb-4 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop" 
-                                 alt="Field Operations" 
-                                 class="w-full h-full object-cover contrast-125 grayscale hover:grayscale-0 transition-all duration-500">
-                            <div class="absolute bottom-3 left-3 bg-obsidian/90 px-3 py-1 font-mono text-[10px] text-amberBright border border-slateBorder">
-                                [ FIELD DIRECTING // DELHI-NCR HUB ]
-                            </div>
-                        </div>
-
-                        <div class="space-y-2 font-mono text-[11px] text-silverText border-t border-slateBorder pt-4">
-                            <div class="flex justify-between">
-                                <span>WORKETHIC:</span>
-                                <span class="text-bonewhite">FIELD-FIRST // LEAN UNIT</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>CULTURE:</span>
-                                <span class="text-bonewhite">MUTUAL RESPECT & EQUITY</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>STANDARD:</span>
-                                <span class="text-bonewhite">UNCOMPROMSED CRAFT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. CALL TO ARMS & GATEWAY FOOTER -->
-    <section class="py-24 px-6 md:px-16 lg:px-24 bg-obsidian relative overflow-hidden">
+    <!-- 7. DAY 10 RECRUITMENT LIVE COUNTDOWN & UNSTOP GATEWAY SECTION -->
+    <section id="recruitment" class="py-24 px-6 md:px-16 lg:px-24 border-b border-slateBorder bg-charcoal/50 relative">
         <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10">
             
             <div class="inline-block border border-amberAccent px-4 py-1.5 font-mono text-xs text-amberBright tracking-widest uppercase">
-                RECRUITMENT PIPELINE ACTIVE // PROJECT FIRST FRAME
+                DAY 10 RECRUITMENT DROP // PROJECT FIRST FRAME
             </div>
 
-            <h2 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl tracking-tight text-bonewhite uppercase leading-none">
-                BUILD THE FOUNDING CORE WITH US.
+            <h2 class="font-heading font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-bonewhite uppercase">
+                FOUNDING UNIT HIRING LAUNCH
             </h2>
 
             <p class="font-sans text-base sm:text-lg text-silverText max-w-2xl mx-auto font-normal leading-relaxed">
-                We are selecting our founding Cinematographer and Visual Editor for Project: First Frame. We don't care about corporate credentials—we care about grit, rhythm, and visual mastery.
+                We are selecting freshers (0–2 years) residing in Meerut or the Delhi-NCR operational radius for our foundational camera and editorial roles. 
             </p>
 
-            <!-- Roles Breakdown Badge Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto text-left font-mono text-xs py-4">
-                <div class="border border-slateBorder bg-charcoal p-4 space-y-1">
-                    <div class="text-amberBright font-bold">01. CINEMATOGRAPHER TRACK</div>
-                    <div class="text-silverText">Field Cinematography // 4K LOG</div>
-                    <div class="text-bonewhite font-semibold pt-2">3% Vested Equity Stake</div>
+            <!-- LIVE COUNTDOWN TIMER WIDGET (Target: Nov 20, 2026) -->
+            <div id="countdown-container" class="max-w-xl mx-auto grid grid-cols-4 gap-3 py-6 font-mono">
+                <div class="bg-obsidian border border-slateBorder p-4 text-center">
+                    <div id="days" class="text-2xl sm:text-3xl font-bold text-bonewhite">00</div>
+                    <div class="text-[10px] text-mutedText uppercase mt-1">Days</div>
                 </div>
-                <div class="border border-slateBorder bg-charcoal p-4 space-y-1">
-                    <div class="text-amberBright font-bold">02. VISUAL EDITOR TRACK</div>
-                    <div class="text-silverText">Narrative Pacing & Motion</div>
-                    <div class="text-bonewhite font-semibold pt-2">4% Vested Equity Stake</div>
+                <div class="bg-obsidian border border-slateBorder p-4 text-center">
+                    <div id="hours" class="text-2xl sm:text-3xl font-bold text-bonewhite">00</div>
+                    <div class="text-[10px] text-mutedText uppercase mt-1">Hours</div>
+                </div>
+                <div class="bg-obsidian border border-slateBorder p-4 text-center">
+                    <div id="minutes" class="text-2xl sm:text-3xl font-bold text-bonewhite">00</div>
+                    <div class="text-[10px] text-mutedText uppercase mt-1">Minutes</div>
+                </div>
+                <div class="bg-obsidian border border-slateBorder p-4 text-center">
+                    <div id="seconds" class="text-2xl sm:text-3xl font-bold text-signalGold">00</div>
+                    <div class="text-[10px] text-mutedText uppercase mt-1">Seconds</div>
+                </div>
+            </div>
+
+            <!-- Role Breakdown Cards with Direct Unstop Gateways -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto text-left font-mono text-xs pt-4">
+                <div class="reticle-box bg-obsidian border border-slateBorder p-6 space-y-3">
+                    <div class="text-amberBright font-bold text-sm">01. CINEMATOGRAPHER TRACK</div>
+                    <div class="text-silverText text-[11px]">Field Cinematography // 4K LOG<br>Base: Meerut / Delhi-NCR</div>
+                    <div class="text-bonewhite font-semibold pt-1">3% Vested Equity Stake</div>
+                    <div class="pt-3">
+                        <a href="https://unstop.com" target="_blank" class="block w-full bg-amberAccent hover:bg-amberBright text-obsidian text-center py-3 font-bold tracking-widest transition-all">
+                            APPLY VIA UNSTOP →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reticle-box bg-obsidian border border-slateBorder p-6 space-y-3">
+                    <div class="text-amberBright font-bold text-sm">02. VISUAL EDITOR TRACK</div>
+                    <div class="text-silverText text-[11px]">Narrative Assembly & Pacing<br>Base: Hybrid / NCR Regional</div>
+                    <div class="text-bonewhite font-semibold pt-1">4% Vested Equity Stake</div>
+                    <div class="pt-3">
+                        <a href="https://unstop.com" target="_blank" class="block w-full bg-amberAccent hover:bg-amberBright text-obsidian text-center py-3 font-bold tracking-widest transition-all">
+                            APPLY VIA UNSTOP →
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="pt-4">
-                <button onclick="openModal()" class="reticle-box bg-amberAccent hover:bg-amberBright text-obsidian font-mono text-sm font-bold tracking-widest px-10 py-5 transition-all duration-200 inline-flex items-center space-x-3">
-                    <span>VIEW ROADMAP & PRE-LAUNCH STATUS</span>
-                    <i class="fa-solid fa-arrow-right"></i>
+                <button onclick="openModal()" class="border border-slateBorder hover:border-amberAccent text-bonewhite hover:text-amberBright px-8 py-4 font-mono text-xs font-bold tracking-widest transition-all bg-charcoal">
+                    REVIEW FULL 4-STAGE SELECTION ROADMAP
                 </button>
             </div>
             
-            <div class="font-mono text-[10px] text-mutedText tracking-widest uppercase pt-6">
+            <div class="font-mono text-[10px] text-mutedText tracking-widest uppercase pt-4">
                 PROCESSED VIA UNSTOP APPLICATION GATEWAY // STRICT 4-STAGE SELECTION PIPELINE
             </div>
         </div>
     </section>
 
-    <!-- FOOTER WITH VIEWABLE ACTIVE SOCIAL HANDLES, INQUIRY EMAIL & GOVERNANCE LINK -->
+    <!-- FOOTER -->
     <footer class="border-t border-slateBorder py-8 px-6 md:px-12 bg-charcoal font-mono text-xs text-silverText flex flex-col justify-between items-center space-y-6 text-center">
         <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm">
             <a href="terms" class="text-amberBright hover:text-bonewhite transition-colors text-xs tracking-widest uppercase font-bold">[ GOVERNANCE & TERMS ]</a>
@@ -481,11 +430,10 @@
         </div>
     </footer>
 
-    <!-- 9. SELECTION ROADMAP MODAL -->
+    <!-- 8. SELECTION ROADMAP MODAL -->
     <div id="application-modal" class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6 transition-all duration-300">
         <div class="reticle-box bg-charcoal border border-amberAccent/60 max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
             
-            <!-- Close Button -->
             <button onclick="closeModal()" class="absolute top-4 right-4 text-mutedText hover:text-amberBright font-mono text-lg font-bold">
                 [✕]
             </button>
@@ -498,52 +446,47 @@
                 FOUNDING UNIT ROADMAP
             </h3>
 
-            <!-- Strategic Pre-Launch Notice Header -->
             <div class="mb-6 p-3 border border-amberAccent/40 bg-amberAccent/10 font-mono text-xs text-amberBright flex items-center space-x-2">
                 <i class="fa-solid fa-clock"></i>
-                <span>[ PRE-LAUNCH STATUS: APPLICATION PORTAL DEPLOYING SOON ]</span>
+                <span>[ STATUS: DAY 10 RECRUITMENT LIVE ON UNSTOP ]</span>
             </div>
 
             <div class="space-y-6 font-mono text-xs text-silverText">
-                
                 <div class="border-l-2 border-amberAccent pl-4 space-y-1">
                     <div class="text-bonewhite font-bold">STAGE 01 // UNSTOP APPLICATION & PORTFOLIO FILTER</div>
-                    <p class="font-sans text-xs">Submit your top 2-3 work cuts and answer core screening questions regarding independent vision.</p>
+                    <p class="font-sans text-xs">Submit top 2–3 work cuts and answer location & equity commitment questions.</p>
                 </div>
 
                 <div class="border-l-2 border-slateBorder pl-4 space-y-1">
                     <div class="text-bonewhite font-bold">STAGE 02 // 48-HOUR PRACTICAL AUDIT</div>
-                    <p class="font-sans text-xs">Shortlisted Editors receive the Stage 2 Audio/Visual Vault; Cinematographers perform a guided local street-level capture (strictly open public spaces).</p>
+                    <p class="font-sans text-xs">Cinematographers shoot a clean public space in Meerut/NCR; Editors edit provided raw stems within 48 hours.</p>
                 </div>
 
                 <div class="border-l-2 border-slateBorder pl-4 space-y-1">
                     <div class="text-bonewhite font-bold">STAGE 03 // 1-ON-1 NARRATIVE ALIGNMENT INTERVIEW</div>
-                    <p class="font-sans text-xs">Deep-dive technical review with Founder Harsh Kumar to assess vision, data hygiene, and operational fit.</p>
+                    <p class="font-sans text-xs">Direct review with Founder Harsh Kumar to verify technical rigor, data hygiene, and mindset.</p>
                 </div>
 
                 <div class="border-l-2 border-amberBright pl-4 space-y-1">
                     <div class="text-bonewhite font-bold text-amberBright">STAGE 04 // 30-DAY PILOT (PROJECT: FIRST FRAME)</div>
-                    <p class="font-sans text-xs">Paid pilot sprint leading directly to vested equity onboarding (3% Cinematographer / 4% Editor).</p>
+                    <p class="font-sans text-xs">Paid field/edit sprint leading directly to vested equity onboarding (3% Cinematographer / 4% Editor).</p>
                 </div>
-
             </div>
 
-            <!-- External Redirect Action & Governance Link -->
             <div class="mt-8 pt-6 border-t border-slateBorder flex flex-col sm:flex-row justify-between items-center gap-4">
                 <a href="terms" class="font-mono text-xs text-amberBright hover:underline tracking-wider">
                     → Review Full Governance & Equity Terms
                 </a>
                 <button onclick="closeModal()" class="w-full sm:w-auto bg-amberAccent hover:bg-amberBright text-obsidian font-mono text-xs font-bold px-6 py-3 tracking-widest text-center transition-all uppercase">
-                    ACKNOWLEDGE & CLOSE
+                    CLOSE ROADMAP
                 </button>
             </div>
-
         </div>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Live UTC Clock Script for Viewfinder Header
+        // Live UTC Clock Script
         function updateClock() {
             const now = new Date();
             const hours = String(now.getUTCHours()).padStart(2, '0');
@@ -554,7 +497,35 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Mobile Menu Toggle logic
+        // Countdown Timer to November 20, 2026 00:00:00
+        const launchDate = new Date('November 20, 2026 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
@@ -566,7 +537,7 @@
             }
         }
 
-        // Application Modal Toggle logic
+        // Modal Toggles
         function openModal() {
             document.getElementById('application-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -576,7 +547,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close Modal when clicking outside container
         window.onclick = function(event) {
             const modal = document.getElementById('application-modal');
             if (event.target === modal) {
